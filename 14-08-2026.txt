@@ -326,9 +326,6 @@ Finally forEach prints the result.
 
 This chaining part is useful for coding problems.
 
-
-MY QUICK UNDERSTANDING
-
 Queue
 -> FIFO
 -> first added is normally first removed
