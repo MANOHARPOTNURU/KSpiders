@@ -1,0 +1,280 @@
+
+Topics:
+- Threads
+- Runnable
+- Callable
+- Supplier
+- Thread Pool
+- Single Thread Pool
+- Fixed Thread Pool
+- Cached Thread Pool
+
+
+1. THREADS
+
+A thread is a separate path of execution inside a program.
+It helps in doing multiple tasks without making everything wait
+for one task to finish.
+
+Examples:
+- background work
+- file operations
+- downloading
+- handling multiple requests
+
+Today the main focus was Runnable, Callable and thread pools.
+
+
+2. RUNNABLE
+
+Runnable is used to define a task which can be executed by a
+thread.
+
+Runnable has one abstract method:
+
+run()
+
+Runnable does not return a result.
+
+So I remember it as:
+
+Runnable -> do some work
+          -> no return value
+
+It is also a functional interface.
+
+
+3. CALLABLE
+
+Callable is similar to Runnable, but it can return a result.
+
+Callable uses:
+
+call()
+
+The call() method can return a value and can also throw a
+checked exception.
+
+Main difference:
+
+Runnable -> run() -> no result
+Callable -> call() -> result can be returned
+
+Callable is commonly used with ExecutorService and thread pools
+when we need the result of a task.
+
+
+4. RUNNABLE VS CALLABLE
+
+Runnable:
+- run() method
+- no return value
+- used when result is not needed
+
+Callable:
+- call() method
+- can return a value
+- can throw checked exception
+- useful when result is required
+
+This is one of the important differences from today's topic.
+
+
+5. SUPPLIER
+
+Supplier is a functional interface from java.util.function
+
+It does not take any input but gives/returns a value.
+
+I remember it like:
+
+Supplier -> supplies something
+
+Main method:
+
+get()
+
+Example concept:
+
+Supplier<String>
+
+No input -> String output
+
+Supplier and Callable can both give a result, but their purpose
+is different.
+
+Callable is mainly for a task which is executed asynchronously
+and can return a result.
+
+Supplier is a functional interface representing a value-producing
+operation.
+
+
+6. THREAD POOL
+
+Creating a new thread for every task is not always a good idea.
+
+A Thread Pool contains/reuses worker threads and executes the
+tasks submitted to it.
+
+Main advantages:
+- threads can be reused
+- avoids creating too many threads
+- better management of tasks
+- useful when many tasks are coming
+
+
+7. EXECUTOR SERVICE
+
+ExecutorService is used to manage thread pools and task
+execution.
+
+Tasks can be submitted using:
+
+execute()
+submit()
+
+execute() is mainly used for Runnable.
+
+submit() can be used for Runnable and Callable.
+
+For Callable, submit() gives a Future which can later be used
+to get the result.
+
+
+8. SINGLE THREAD POOL
+
+Single thread pool means there is only one worker thread.
+
+If we submit:
+
+Task 1
+Task 2
+Task 3
+Task 4
+
+they are processed one after another by the same worker.
+
+So:
+
+Single = 1 worker thread
+
+It is useful when tasks should be executed sequentially.
+
+
+9. FIXED THREAD POOL
+
+Fixed thread pool has a fixed number of worker threads.
+
+For example, if the pool has 3 threads:
+
+Thread 1
+Thread 2
+Thread 3
+
+If 10 tasks are submitted, maximum 3 tasks can execute at the
+same time. Other tasks wait until a worker becomes free.
+
+I understood this as:
+
+Fixed -> number of threads is decided when creating the pool.
+
+Useful when we want to control how many tasks can run at once.
+
+
+10. CACHED THREAD POOL
+
+Cached thread pool is more dynamic.
+
+It creates new threads when required and can reuse threads that
+are already idle.
+
+So it doesn't have a fixed number like fixed thread pool.
+
+Unused idle threads can be removed after some time.
+
+I remember:
+
+Fixed -> fixed number
+Cached -> create/reuse according to workload
+
+It can be useful for many short tasks, but if too many tasks are
+submitted it needs to be used carefully because the pool can
+create many threads.
+
+
+11. SINGLE vs FIXED vs CACHED
+
+Single Thread Pool:
+- one worker thread
+- tasks execute one by one
+- simple sequential processing
+
+Fixed Thread Pool:
+- fixed number of worker threads
+- controls maximum concurrent tasks
+- useful when workload/concurrency limit is known
+
+Cached Thread Pool:
+- creates threads when required
+- reuses idle threads
+- number of threads can change according to workload
+
+
+
+15. MY UNDERSTANDING
+
+Initially Runnable and Callable looked almost the same to me.
+
+After today's discussion I understood:
+
+Runnable
+-> run()
+-> no return value
+
+Callable
+-> call()
+-> can return value
+
+Supplier
+-> no input
+-> supplies a value
+
+Then Thread Pool is mainly about managing/reusing threads instead
+of creating a new thread manually for every task.
+
+Single pool is easiest to understand because there is only one
+worker.
+
+Fixed pool has a fixed number of workers.
+
+Cached pool is dynamic and creates/reuses workers based on need.
+
+
+16. IMPORTANT POINTS TO REMEMBER
+
+- Thread = unit of execution.
+- Runnable = task without return value.
+- Callable = task which can return a value.
+- Supplier = no input, returns/supplies a value.
+- ExecutorService manages task execution.
+- Thread Pool helps reuse worker threads.
+- Single Thread Pool has one worker.
+- Fixed Thread Pool has a fixed number of workers.
+- Cached Thread Pool creates/reuses workers based on demand.
+- submit() can be used with Callable.
+- Callable result can be received through Future.
+
+
+17. THINGS I NEED TO PRACTICE
+
+- Thread vs ExecutorService
+- Runnable with ExecutorService
+- Callable and Future
+- Future get() / isDone()
+- Fixed thread pool with multiple tasks
+- Difference between fixed and cached pool
+- When to use each type of pool
+- Supplier vs Callable
+- More multithreading examples
+
