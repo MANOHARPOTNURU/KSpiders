@@ -1,0 +1,368 @@
+SPRING BOOT - TRAINING NOTES
+Date : 25/08/2026
+
+Today's session topic : Spring Boot
+
+Started with basic architecture / layers used in a Spring Boot
+application.
+
+
+1. BASIC LAYERS
+
+The main layers discussed were:
+
+Model / Entity
+-> represents database object
+
+DTO
+-> transfers/converts original object into required object
+
+Controller
+-> contains the http request endpoints
+
+Service
+-> contains business logic
+
+Repository
+-> connects with the database
+
+
+I understood the flow like:
+
+Client
+   ↓
+Controller
+   ↓
+Service
+   ↓
+Repository
+   ↓
+Database
+
+And Model/Entity is mainly the object which represents the
+database table/data.
+
+
+2. MODEL / ENTITY
+
+Entity represents a database object.
+
+Normally a Java class is created for an entity.
+
+For example if we have Student table, we can have:
+
+Student
+- id
+- name
+- email
+- age
+
+The Entity class represents this data in Java.
+
+In Spring Boot this is generally done using JPA annotations
+like @Entity.
+
+Need to remember:
+Entity = database related object.
+
+
+3. DTO
+
+DTO means Data Transfer Object.
+
+DTO is used when we don't want to directly send the complete
+Entity object from one layer to another or to the client.
+
+It is mainly used to transfer only the required data.
+
+Example:
+
+Entity may have:
+
+Student
+- id
+- name
+- email
+- password
+
+But while sending response we may only need:
+
+StudentDTO
+- id
+- name
+- email
+
+So password should not be exposed.
+
+I understood DTO as:
+DTO -> object used for transferring required data.
+
+
+4. CONTROLLER
+
+Controller handles HTTP requests.
+
+It is the entry point for requests coming from client/API.
+
+Examples of HTTP requests:
+
+GET
+POST
+PUT
+DELETE
+
+Controller contains endpoints.
+
+Common annotation:
+
+@RestController
+
+Other annotations we may use:
+
+@GetMapping
+@PostMapping
+@PutMapping
+@DeleteMapping
+@RequestBody
+@PathVariable
+@RequestParam
+
+
+Example flow:
+
+GET /students
+
+Request comes to Controller first.
+
+Controller then calls Service.
+
+
+5. SERVICE
+
+Service layer contains the business logic.
+
+Controller should not contain all the actual business logic.
+
+Example:
+
+Controller:
+"Give me student details"
+
+Service:
+checks/handles the required business logic
+
+Then Service calls Repository to get the data.
+
+Common annotation:
+
+@Service
+
+
+6. REPOSITORY
+
+Repository is the layer which communicates with database.
+
+Instead of writing database connection code everywhere,
+we use Repository.
+
+Spring Data JPA provides repository interfaces.
+
+Common example:
+
+JpaRepository
+
+Repository is mainly responsible for operations like:
+
+- save
+- find
+- update
+- delete
+
+Common annotation/interface:
+
+@Repository
+JpaRepository
+
+
+7. OVERALL REQUEST FLOW
+
+I noted this flow during the session:
+
+Client
+  |
+  v
+Controller
+  |
+  v
+Service
+  |
+  v
+Repository
+  |
+  v
+Database
+
+Then response comes back:
+
+Database
+  |
+  v
+Repository
+  |
+  v
+Service
+  |
+  v
+Controller
+  |
+  v
+Client
+
+
+8. WHY DIFFERENT LAYERS?
+
+One reason is to keep the application organised.
+
+If everything is written inside Controller then the code
+becomes difficult to maintain.
+
+So each layer has its own responsibility.
+
+Controller
+-> request handling
+
+Service
+-> business logic
+
+Repository
+-> database operations
+
+Entity
+-> database/data representation
+
+DTO
+-> data transfer
+
+
+9. SOME ANNOTATIONS I NEED TO REMEMBER
+
+@SpringBootApplication
+-> main Spring Boot application annotation
+
+@RestController
+-> creates REST controller
+
+@Service
+-> marks service class
+
+@Repository
+-> repository layer
+
+@Entity
+-> marks class as JPA entity
+
+@GetMapping
+-> GET request
+
+@PostMapping
+-> POST request
+
+@PutMapping
+-> PUT request
+
+@DeleteMapping
+-> DELETE request
+
+@RequestBody
+-> gets data from request body
+
+@PathVariable
+-> gets value from URL
+
+@RequestParam
+-> gets query parameter
+
+
+10. SPRING BOOT BASIC UNDERSTANDING
+
+Spring Boot is used to build Java applications, especially
+web applications and REST APIs, more easily.
+
+It reduces a lot of configuration compared to traditional
+Spring setup.
+
+Spring Boot provides features like:
+- auto configuration
+- embedded server
+- starter dependencies
+- easy REST API development
+
+
+11. WHAT I UNDERSTOOD TODAY
+
+The main thing I understood from today's session is that a
+Spring Boot project is divided into different layers instead
+of keeping everything in one class.
+
+Controller receives request.
+
+Service processes the request and applies business logic.
+
+Repository communicates with database.
+
+Entity represents the database object.
+
+DTO is used to transfer only the required data.
+
+So the basic architecture I remember is:
+
+Controller
+    ↓
+Service
+    ↓
+Repository
+    ↓
+Database
+
+
+12. NEED TO PRACTICE
+
+I need to practice:
+
+- Creating a Spring Boot project
+- Creating Controller
+- Creating Service
+- Creating Repository
+- Creating Entity
+- Creating DTO
+- GET API
+- POST API
+- PUT API
+- DELETE API
+- Connecting Spring Boot with database
+- Understanding JpaRepository properly
+- Difference between Entity and DTO
+
+
+QUICK REVISION
+
+Model/Entity -> represents database object
+
+DTO -> transfers required data
+
+Controller -> handles HTTP requests/endpoints
+
+Service -> business logic
+
+Repository -> database connection/data operations
+
+Flow:
+
+Client -> Controller -> Service -> Repository -> Database
+
+
+My main takeaway from today's session:
+
+Don't put everything in Controller.
+Keep request handling, business logic and database operations
+separate using different layers.
