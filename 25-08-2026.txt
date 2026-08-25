@@ -7,7 +7,6 @@ application.
 
 1. BASIC LAYERS
 
-The main layers discussed were:
 
 Model / Entity
  represents database object
@@ -16,25 +15,24 @@ DTO
 transfers/converts original object into required object
 
 Controller
--> contains the http request endpoints
+ contains the http request endpoints
 
 Service
--> contains business logic
+ contains business logic
 
 Repository
--> connects with the database
+ connects with the database
 
 
 I understood the flow like:
 
 Client
-   ↓
+   
 Controller
-   ↓
 Service
-   ↓
+   
 Repository
-   ↓
+   
 Database
 
 And Model/Entity is mainly the object which represents the
@@ -50,10 +48,10 @@ Normally a Java class is created for an entity.
 For example if we have Student table, we can have:
 
 Student
-- id
-- name
-- email
-- age
+ id
+ name
+ email
+ age
 
 The Entity class represents this data in Java.
 
@@ -78,22 +76,22 @@ Example:
 Entity may have:
 
 Student
-- id
-- name
-- email
-- password
+ id
+ name
+ email
+ password
 
 But while sending response we may only need:
 
 StudentDTO
-- id
-- name
-- email
+ id
+ name
+ email
 
 So password should not be exposed.
 
 I understood DTO as:
-DTO -> object used for transferring required data.
+DTO - object used for transferring required data.
 
 
 4. CONTROLLER
@@ -171,10 +169,10 @@ JpaRepository
 
 Repository is mainly responsible for operations like:
 
-- save
-- find
-- update
-- delete
+ save
+ find
+ update
+delete
 
 Common annotation/interface:
 
@@ -187,17 +185,13 @@ JpaRepository
 I noted this flow during the session:
 
 Client
-  |
-  v
+  
 Controller
-  |
-  v
+ 
 Service
-  |
-  v
+ 
 Repository
-  |
-  v
+ 
 Database
 
 Then response comes back:
