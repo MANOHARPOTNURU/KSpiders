@@ -197,17 +197,13 @@ Database
 Then response comes back:
 
 Database
-  |
-  v
+  
 Repository
-  |
-  v
+ 
 Service
-  |
-  v
+ 
 Controller
-  |
-  v
+  
 Client
 
 
@@ -221,58 +217,58 @@ becomes difficult to maintain.
 So each layer has its own responsibility.
 
 Controller
--> request handling
+ request handling
 
 Service
--> business logic
+ business logic
 
 Repository
--> database operations
+ database operations
 
 Entity
--> database/data representation
+ database/data representation
 
 DTO
--> data transfer
+ data transfer
 
 
 9. SOME ANNOTATIONS I NEED TO REMEMBER
 
 @SpringBootApplication
--> main Spring Boot application annotation
+ main Spring Boot application annotation
 
 @RestController
--> creates REST controller
+ creates REST controller
 
 @Service
--> marks service class
+ marks service class
 
 @Repository
--> repository layer
+ repository layer
 
 @Entity
--> marks class as JPA entity
+ marks class as JPA entity
 
 @GetMapping
--> GET request
+ GET request
 
 @PostMapping
--> POST request
+ POST request
 
 @PutMapping
--> PUT request
+ PUT request
 
 @DeleteMapping
--> DELETE request
+ DELETE request
 
 @RequestBody
--> gets data from request body
+ gets data from request body
 
 @PathVariable
--> gets value from URL
+ gets value from URL
 
 @RequestParam
--> gets query parameter
+ gets query parameter
 
 
 10. SPRING BOOT BASIC UNDERSTANDING
@@ -284,10 +280,10 @@ It reduces a lot of configuration compared to traditional
 Spring setup.
 
 Spring Boot provides features like:
-- auto configuration
-- embedded server
-- starter dependencies
-- easy REST API development
+ auto configuration
+ embedded server
+ starter dependencies
+easy REST API development
 
 
 11. WHAT I UNDERSTOOD TODAY
@@ -309,48 +305,32 @@ DTO is used to transfer only the required data.
 So the basic architecture I remember is:
 
 Controller
-    ↓
+    
 Service
-    ↓
+    
 Repository
-    ↓
+    
 Database
 
 
-12. NEED TO PRACTICE
-
-I need to practice:
-
-- Creating a Spring Boot project
-- Creating Controller
-- Creating Service
-- Creating Repository
-- Creating Entity
-- Creating DTO
-- GET API
-- POST API
-- PUT API
-- DELETE API
-- Connecting Spring Boot with database
-- Understanding JpaRepository properly
-- Difference between Entity and DTO
 
 
-QUICK REVISION
 
-Model/Entity -> represents database object
 
-DTO -> transfers required data
 
-Controller -> handles HTTP requests/endpoints
+Model/Entity - represents database object
 
-Service -> business logic
+DTO - transfers required data
 
-Repository -> database connection/data operations
+Controller - handles HTTP requests/endpoints
+
+Service - business logic
+
+Repository - database connection/data operations
 
 Flow:
 
-Client -> Controller -> Service -> Repository -> Database
+Client - Controller - Service - Repository - Database
 
 
 My main takeaway from today's session:
