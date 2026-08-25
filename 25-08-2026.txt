@@ -1,5 +1,3 @@
-SPRING BOOT - TRAINING NOTES
-Date : 25/08/2026
 
 Today's session topic : Spring Boot
 
@@ -12,10 +10,10 @@ application.
 The main layers discussed were:
 
 Model / Entity
--> represents database object
+ represents database object
 
 DTO
--> transfers/converts original object into required object
+transfers/converts original object into required object
 
 Controller
 -> contains the http request endpoints
