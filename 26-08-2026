@@ -1,0 +1,107 @@
+
+
+Topics for today:  
+@Service  
+Service layer  
+@Repository  
+Working with Employee data  
+List  
+Java Streams basics  
+stream()  
+filter()  
+collect()  
+Collectors.toMap()  
+Filtering employees by salary  
+
+1) @SERVICE  
+
+@Service marks a class so Spring treats it as a service.  
+
+In most apps, the service part holds the work rules and decisions.  
+I feel the controller should stay light and only call other parts.  
+The controller sends input to the service. The service then does the real steps.  
+
+Flow I noted:  
+Controller  
+↓  
+Service  
+↓  
+Repository  
+
+2) SERVICE LAYER  
+
+A service acts like a go between.  
+It sits between the controller and the repository.  
+
+Example flow:  
+Controller receives a request  
+↓  
+Service reads and processes Employee data  
+↓  
+Repository fetches or updates data in the database  
+
+So I keep it simple:  
+Service means business logic  
+
+3) @REPOSITORY  
+
+@Repository marks a class for the repository role.  
+
+This layer is for database tasks.  
+It handles actions like:  
+get data  
+save data  
+update data  
+delete data  
+
+Flow I wrote:  
+Controller  
+↓  
+Service  
+↓  
+Repository  
+↓  
+Database  
+
+4) EMPLOYEE DATA  
+
+We used Employee data to learn Streams.  
+
+An Employee can hold:  
+id  
+name  
+department  
+salary  
+
+Sample objects:  
+Employee(1, "Manohar", "IT", 50000)  
+Employee(2, "Rahul", "HR", 40000)  
+Employee(3, "Suresh", "IT", 70000)  
+
+We can store them in a list:  
+List  
+
+5) LIST  
+
+List is a list of Employee objects.  
+
+Example:  
+List employees = new ArrayList<>();  
+
+employees.add(employee1);  
+employees.add(employee2);  
+employees.add(employee3);  
+
+After that, we can work on the list using Java Streams.  
+
+6) JAVA STREAMS  
+
+A Stream helps deal with collection data.  
+
+Instead of using many loops, Stream API lets us apply steps to the data.  
+
+Typical methods:  
+stream()  
+filter()  
+map()  
+collect()
