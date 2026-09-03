@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Registration - Assessment System</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register-card {
+
+            width: 450px;
+
+            background: white;
+
+            padding: 38px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                    0 8px 25px rgba(0, 0, 0, 0.10);
+        }
+
+        h1 {
+
+            text-align: center;
+
+            margin-top: 0;
+
+            color: #1f2937;
+        }
+
+        .subtitle {
+
+            text-align: center;
+
+            color: #6b7280;
+
+            margin-bottom: 28px;
+        }
+
+        .warning {
+
+            background: #fff7ed;
+
+            border: 1px solid #fed7aa;
+
+            color: #9a3412;
+
+            padding: 12px;
+
+            border-radius: 7px;
+
+            margin-bottom: 22px;
+
+            font-size: 14px;
+        }
+
+        .message {
+
+            text-align: center;
+
+            margin-bottom: 20px;
+
+            font-weight: bold;
+        }
+
+        .error {
+
+            color: #dc2626;
+        }
+
+        .form-group {
+
+            margin-bottom: 18px;
+        }
+
+        label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: bold;
+
+            color: #374151;
+        }
+
+        input {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 6px;
+
+            font-size: 15px;
+        }
+
+        input:focus {
+
+            outline: none;
+
+            border-color: #2563eb;
+        }
+
+        .register-button {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .register-button:hover {
+
+            background: #1d4ed8;
+        }
+
+        .login-link {
+
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: #6b7280;
+        }
+
+        .login-link a {
+
+            color: #2563eb;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+
+            text-decoration: underline;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="register-card">
+
+    <h1>Admin Registration</h1>
+
+    <p class="subtitle">
+        Create an administrator account
+    </p>
+
+
+    <div class="warning">
+
+        Admin registration is restricted.
+        A valid Admin Registration Key is required.
+
+    </div>
+
+
+    <!-- Error messages -->
+
+    <script>
+
+        const params =
+            new URLSearchParams(window.location.search);
+
+        const error = params.get("error");
+
+        if (error === "invalidKey") {
+
+            document.write(
+                '<div class="message error">Invalid Admin Registration Key.</div>'
+            );
+
+        } else if (error === "emailExists") {
+
+            document.write(
+                '<div class="message error">An account with this email already exists.</div>'
+            );
+
+        }
+
+    </script>
+
+
+    <form action="admin-register" method="post">
+
+
+        <div class="form-group">
+
+            <label for="name">
+                Full Name
+            </label>
+
+            <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="email">
+                Email
+            </label>
+
+            <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter admin email"
+                    required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                    required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="adminKey">
+                Admin Registration Key
+            </label>
+
+            <input
+                    type="password"
+                    id="adminKey"
+                    name="adminKey"
+                    placeholder="Enter registration key"
+                    required
+            >
+
+        </div>
+
+
+        <button
+                type="submit"
+                class="register-button">
+
+            Create Admin Account
+
+        </button>
+
+
+    </form>
+
+
+    <div class="login-link">
+
+        Already have an account?
+
+        <a href="login.html">
+            Login
+        </a>
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
