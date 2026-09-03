@@ -1,0 +1,167 @@
+Date : 12/08/2026
+
+1. LIST
+
+List is used to store multiple values in one variable.
+
+Important points:
+- insertion order is maintained
+- duplicate values are allowed
+- index based access is possible
+- List is interface
+
+Example :
+
+List<Integer> nums = new ArrayList<>();
+
+nums.add(10);
+nums.add(20);
+nums.add(10);
+
+System.out.println(nums);
+
+output : 10, 20, 10
+
+*****list can have same value multiple times*****
+
+Some methods:
+add()
+get()
+set()
+remove()
+contains()
+size()
+
+
+2. SET
+
+Set is used when we dont want duplicate values.
+
+HashSet is one implementation of Set.
+
+Example:
+
+Set<Integer> set = new HashSet<>();
+
+set.add(10);
+set.add(20);
+set.add(10);
+set.add(30);
+
+System.out.println(set);
+
+Here 10 will come only one time.
+
+*****Set does not have index like List *****
+
+Methods:
+add()
+remove()
+contains()
+size()
+
+
+3. LINKEDLIST
+
+LinkedList is also List implementation.
+
+It can be used for adding and removing elements from first
+and last.
+
+Example:
+
+LinkedList<String> names = new LinkedList<>();
+
+names.add("Manohar");
+names.add("Rahul");
+names.add("Suresh");
+
+names.addFirst("Anil");
+names.addLast("Kiran");
+
+System.out.println(names);
+
+Methods :
+
+addFirst()
+addLast()
+removeFirst()
+removeLast()
+getFirst()
+getLast()
+
+LinkedList can also be used as Queue.
+
+
+
+
+4. HASHMAP
+
+HashMap stores data in key and value format.
+
+Example:
+
+HashMap<String,Integer> marks = new HashMap<>();
+
+marks.put("Manohar",85);
+marks.put("Rahul",78);
+marks.put("Suresh",92);
+
+System.out.println(marks);
+
+Key should be unique.
+
+If same key is added again then old value will be replaced.
+
+Example:
+
+marks.put("Manohar",85);
+marks.put("Manohar",90);
+
+Now Manohar = 90
+
+
+Important methods:
+
+put()
+get()
+remove()
+containsKey()
+containsValue()
+size()
+
+One important method:
+
+getOrDefault()
+
+
+
+
+5. DIFFERENCE
+
+List:
+- duplicate allowed
+- order maintained
+- index available
+
+Set:
+- duplicate not allowed
+- no index
+- mainly used for unique values
+
+HashMap:
+- key + value
+- key should be unique
+- useful for searching and frequency
+
+
+6. DOUBTS / THINGS TO PRACTICE
+
+Need to practice Coding Problems 
+
+Today's understanding:
+
+List -> multiple values + duplicates
+Set -> unique values
+LinkedList -> insertion/removal + queue
+HashMap -> key value pairs

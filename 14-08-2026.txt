@@ -1,0 +1,386 @@
+
+Today's topics:
+1. Queue using LinkedList
+2. Priority Queue
+3. Functional Interfaces
+4. Lambda Expressions
+5. Streams
+6. Method References
+
+
+1) QUEUE USING LINKEDLIST
+
+Today I first understood Queue. Queue basically follows FIFO,
+means First In First Out.
+
+For example if we add:
+A
+B
+C
+
+then A will be removed first.
+
+In Java we can use LinkedList to create a Queue.
+
+Code idea:
+
+Queue<String> queue = new LinkedList<>();
+
+queue.add("Manohar");
+queue.add("Rahul");
+queue.add("Suresh");
+
+queue.peek();
+queue.poll();
+
+peek() is used to see the first element. It does not remove it.
+poll() removes the first element.
+
+I also tried offer(). It is also used to add an element to queue.
+
+Methods I noted:
+- add()
+- offer()
+- peek()
+- poll()
+- remove()
+
+One thing I need to remember:
+peek() -> just checks
+poll() -> checks and removes
+
+
+2) PRIORITY QUEUE
+
+After normal Queue, we discussed PriorityQueue.
+
+This is slightly different from normal Queue because here
+elements are removed based on priority.
+
+For Integer values, by default the smallest value comes first.
+
+Example:
+
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+pq.add(30);
+pq.add(10);
+pq.add(20);
+pq.add(5);
+
+If I keep doing poll(), output will be:
+
+5
+10
+20
+30
+
+So it is not exactly FIFO.
+
+I initially thought the first inserted element will always
+come first, but PriorityQueue works based on priority.
+
+Important methods are almost similar:
+add()
+offer()
+peek()
+poll()
+remove()
+
+Need to practice PriorityQueue with custom objects also.
+
+
+3) FUNCTIONAL INTERFACE
+
+A functional interface is an interface which has only ONE
+abstract method.
+
+Example:
+
+@FunctionalInterface
+interface Calculator {
+    int add(int a, int b);
+}
+
+Here add() is the only abstract method.
+
+The main reason for using functional interface is that it can
+be implemented easily using lambda expression.
+
+I understood this as:
+Functional Interface = rule/structure
+Lambda = actual short implementation
+
+
+4) LAMBDA EXPRESSION
+
+Lambda expression makes the code shorter.
+
+Normal code is something like:
+
+Calculator c = new Calculator() {
+    public int add(int a, int b) {
+        return a + b;
+    }
+};
+
+Using lambda:
+
+Calculator c = (a, b) -> a + b;
+
+This looks much simpler.
+
+Basic syntax:
+
+(parameters) -> expression
+
+If there are multiple statements:
+
+(parameters) -> {
+    statements;
+}
+
+I practiced lambda with lists also.
+
+Example:
+
+names.forEach(name -> System.out.println(name));
+
+This prints every name from the list.
+
+
+5) PREDEFINED FUNCTIONAL INTERFACES
+
+We also looked at some interfaces already available in Java.
+
+Predicate
+- takes input
+- returns true or false
+
+Example:
+
+Predicate<Integer> check = n -> n > 10;
+
+check.test(15);       // true
+
+
+Consumer
+- takes input
+- does not return anything
+
+Example:
+
+Consumer<String> print =
+        name -> System.out.println(name);
+
+print.accept("Manohar");
+
+
+Function
+- takes input
+- returns a result
+
+Example:
+
+Function<Integer, Integer> square = n -> n * n;
+
+square.apply(5);      // 25
+
+
+Supplier
+- does not take input
+- gives a result
+
+Example:
+
+Supplier<String> msg = () -> "Hello Java";
+
+msg.get();
+
+
+6) STREAMS
+
+Stream was a little confusing initially, but the basic idea is
+that Stream is used for processing data from collections.
+
+It does not store the data itself.
+
+Example:
+
+List<Integer> numbers =
+        Arrays.asList(10, 20, 30, 40, 50);
+
+numbers.stream()
+       .filter(n -> n > 20)
+       .forEach(System.out::println);
+
+Here stream() starts the stream.
+
+filter() selects values according to condition.
+
+forEach() performs an action on each selected value.
+
+Output:
+
+30
+40
+50
+
+
+7) FILTER
+
+filter() is used when we only want some elements.
+
+Example:
+
+numbers.stream()
+       .filter(n -> n % 2 == 0)
+       .forEach(System.out::println);
+
+This will print only even numbers.
+
+So I remember filter as:
+"Which elements should I keep?"
+
+
+8) MAP
+
+map() is used to change each element into something else.
+
+Example:
+
+numbers.stream()
+       .map(n -> n * 2)
+       .forEach(System.out::println);
+
+If input is:
+
+1 2 3 4
+
+output becomes:
+
+2 4 6 8
+
+So:
+filter -> select
+map -> change/transform
+
+
+9) SORTED
+
+sorted() is used for sorting stream elements.
+
+Example:
+
+numbers.stream()
+       .sorted()
+       .forEach(System.out::println);
+
+This can be combined with other operations also.
+
+
+10) METHOD REFERENCE
+
+Method reference is basically a shorter way of writing a lambda
+when we already have a suitable method.
+
+For example:
+
+names.forEach(name -> System.out.println(name));
+
+Can be written as:
+
+names.forEach(System.out::println);
+
+The :: symbol is used for method reference.
+
+Some forms I noted:
+
+ClassName::staticMethod
+object::instanceMethod
+ClassName::instanceMethod
+ClassName::new
+
+The System.out::println example was easy to understand.
+
+
+11) COMBINING STREAMS
+
+I practiced combining filter and map.
+
+Example:
+
+List<Integer> numbers =
+        Arrays.asList(10, 15, 20, 25, 30, 35);
+
+numbers.stream()
+       .filter(n -> n % 5 == 0)
+       .map(n -> n * 2)
+       .forEach(System.out::println);
+
+What happens here:
+
+First filter checks the numbers.
+Then map doubles them.
+Finally forEach prints the result.
+
+This chaining part is useful for coding problems.
+
+Queue
+-> FIFO
+-> first added is normally first removed
+
+PriorityQueue
+-> elements come according to priority
+-> for Integer, smallest comes first by default
+
+Functional Interface
+-> only one abstract method
+
+Lambda
+-> short way to implement functional interface
+
+Predicate
+-> returns boolean
+
+Consumer
+-> takes input, no return
+
+Function
+-> input and output
+
+Supplier
+-> no input, gives output
+
+Stream
+-> process collection data
+
+filter()
+-> select
+
+map()
+-> transform
+
+forEach()
+-> perform action
+
+Method Reference
+-> shorter lambda when existing method can be used
+
+
+PRACTICE I DID / NEED TO PRACTICE
+
+I practiced basic Queue operations and PriorityQueue.
+
+Also practiced lambda with list.
+
+For streams, I tried filter and map together.
+
+Need more practice on:
+- PriorityQueue with objects
+- custom comparator
+- different types of method references
+- collect()
+- reduce()
+- more stream coding questions
+
